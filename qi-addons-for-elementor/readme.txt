@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
 Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 1.8.0
+Stable tag: 1.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -165,7 +165,6 @@ https://www.youtube.com/watch?v=WT8ngVYlJ_0&list=PLNypD600o6nK_5QYh--5K6B0ObmgVt
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/rotating-image-tiles/" target="_blank">Rotating Image Tiles</a> - Compose animated presentations with four images divided into a specific number of rotating tiles</li>
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/interactive-info-images/" target="_blank">Interactive Info Images</a> - Allows you to display animated image panels which reveal informative textual content on hover</li>
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/image-hotspots/" target="_blank">Image Hotspots</a> - Create image showcases with interactive hotspots with info reveal on hover</li>
-    <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/elementor-dual-image-carousel-widget/" target="_blank">Dual Image Carousel</a> - Craft visually striking two-image animated carousel showcase sections</li>
 </ul>
 
 <h4>Premium Creative Addons:</h4>
@@ -191,6 +190,7 @@ https://www.youtube.com/watch?v=WT8ngVYlJ_0&list=PLNypD600o6nK_5QYh--5K6B0ObmgVt
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/horizontal-double-row-projects/" target="_blank">Horizontal Double Row</a> - Create appealing horizontally scrolling image showcases aligned in two rows</li>
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/flip-box/" target="_blank">Flip Box</a> - Display easily configurable interactive two-sided boxes containing your content, with some transition animations applied</li>
     <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/news-ticker/" target="_blank">News Ticker</a> - Easily display headlines or pieces of news in horizontally laid out, automatically scrolling crawlers</li>
+    <li><a href="https://qodeinteractive.com/qi-addons-for-elementor/elementor-dual-image-carousel-widget/" target="_blank">Dual Image Carousel</a> - Craft visually striking two-image animated carousel showcase sections</li>
 </ul>
 
 <h4>Premium Infographics Addons:</h4>
@@ -342,6 +342,9 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.8.1 - 17-10-2024 =
+- Improved Sensitive Information Exposure vulnerability through private templates in widgets
 
 = 1.8.0 - 30-09-2024 =
 - Added compatibility with Elementor Widget Caching
