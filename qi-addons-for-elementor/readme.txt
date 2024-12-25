@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
 Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 1.8.2
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -342,6 +342,9 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.8.3 - 25-12-2024 =
+- Improved Swiper script loading
 
 = 1.8.2 - 19-12-2024 =
 - Added 'Disable Lazy Loading' option to 'Image Gallery' widget
