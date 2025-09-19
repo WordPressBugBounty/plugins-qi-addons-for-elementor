@@ -344,6 +344,10 @@ From wordpress.org
 
 == Changelog ==
 
+= 1.9.4 - 19-09-2025 =
+- Fixed potential problem with widget loading
+- Minor improvements
+
 = 1.9.3 - 29-07-2025 =
 - Added support for setting custom units in size controls
 - Added 'container' template type to templates dropdown in shortcodes
