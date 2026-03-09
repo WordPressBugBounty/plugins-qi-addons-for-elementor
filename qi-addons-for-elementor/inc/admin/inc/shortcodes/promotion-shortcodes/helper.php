@@ -35,7 +35,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_promotion_shortcodes_list' ) ) 
 				'icon'          => 'qodef-custom-elementor-icon qi-addons-for-elementor-premium-advanced-toggle',
 			),
 			'qi_addons_for_elementor_premium_album_gallery' => array(
-				'base'          => 'content-slider',
+				'base'          => 'album-gallery',
 				'title'         => esc_html__( 'Album Gallery', 'qi-addons-for-elementor' ),
 				'subcategory'   => esc_html__( 'Showcase', 'qi-addons-for-elementor' ),
 				'demo'          => 'https://qodeinteractive.com/qi-addons-for-elementor/album-gallery/',

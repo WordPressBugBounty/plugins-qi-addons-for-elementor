@@ -212,7 +212,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					$split_text = explode( ' ', $title );
 
 					foreach ( $split_text as $key => $value ) {
-						$split_text[ $key ] = '<span class="qodef-e-word">' . $value . '</span>';
+						$split_text[ $key ] = '<span class="qodef-e-word">' . html_entity_decode( $value ) . '</span>';
 					}
 				} elseif ( 'letter' === $atts['split_title'] ) {
 					$split_text = explode( ' ', $title );
