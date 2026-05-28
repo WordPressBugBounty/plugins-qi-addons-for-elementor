@@ -34,11 +34,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<h2><?php esc_html_e( 'Latest Magazine Articles', 'qi-addons-for-elementor' ); ?></h2>
 		<?php foreach ( $magazine_posts as $magazine_post ) : ?>
 			<div class="qodef-dw-news-list-item">
+				<?php if ( isset( $magazine_post['img_url'] ) && ! empty( $magazine_post['img_url'] ) ) { ?>
 				<div class="qodef-dw-news-list-item-image">
 					<a href="<?php echo esc_url( $magazine_post['link'] ); ?>?utm_source=dash&utm_medium=wp&utm_campaign=widget" target="_blank">
 						<img src="<?php echo esc_url( $magazine_post['img_url'] ); ?>" alt="<?php esc_attr( $magazine_post['title'] ); ?>" />
 					</a>
 				</div>
+				<?php } ?>
 				<div class="qodef-dw-news-list-item-text">
 					<h3><a href="<?php echo esc_url( $magazine_post['link'] ); ?>?utm_source=dash&utm_medium=wp&utm_campaign=widget" target="_blank"><?php echo esc_html( $magazine_post['title'] ); ?></a></h3>
 					<p><?php echo wp_kses_post( substr( $magazine_post['excerpt'], 0, 65 ) ); ?><?php echo strlen( $magazine_post['excerpt'] ) > 110 ? '...' : ''; ?></p>

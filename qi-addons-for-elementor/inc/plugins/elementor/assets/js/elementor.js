@@ -6,9 +6,111 @@
 		function () {
 			qodefAddonsElementor.init();
 			qodefAddonsElementorPromoWidgets.init();
+			qodefAddonsElementorBindElementorProPopupHook();
 
 		}
 	);
+
+	var qodefAddonsElementorPopupHookBound = false;
+
+	function qodefAddonsElementorInitQiWidgetsInScope( $scope ) {
+		if ( ! $scope || ! $scope.length || typeof qodefAddonsCore === 'undefined' || ! qodefAddonsCore.shortcodes ) {
+			return;
+		}
+
+		for ( var key in qodefAddonsCore.shortcodes ) {
+			if ( ! Object.prototype.hasOwnProperty.call( qodefAddonsCore.shortcodes, key ) ) {
+				continue;
+			}
+
+			var $widgets = $scope.find( '.elementor-widget-' + key );
+			if ( ! $widgets.length ) {
+				continue;
+			}
+
+			for ( var keyChild in qodefAddonsCore.shortcodes[key] ) {
+				if ( ! Object.prototype.hasOwnProperty.call( qodefAddonsCore.shortcodes[key], keyChild ) ) {
+					continue;
+				}
+
+				var module = qodefAddonsCore.shortcodes[key][keyChild];
+				if ( typeof module === 'undefined' ) {
+					continue;
+				}
+
+				$widgets.each( function () {
+					var $widgetScope = $( this );
+
+					if ( typeof module.initSlider === 'function' ) {
+						var $sliders = $widgetScope.find( '.qodef-qi-swiper-container' );
+						if ( $sliders.length ) {
+							$sliders.each( function () {
+								module.initSlider( $( this ) );
+							} );
+						}
+					} else if ( typeof module.initItem === 'function' && $widgetScope.find( '.qodef-shortcode' ).length ) {
+						module.initItem( $widgetScope.find( '.qodef-shortcode' ) );
+					} else if ( typeof module.init === 'function' ) {
+						module.init();
+					}
+				} );
+			}
+		}
+	}
+
+	function qodefAddonsElementorBindElementorProPopupHook() {
+
+		if ( qodefAddonsElementorPopupHookBound ) {
+			return true;
+		}
+
+		if ( typeof elementorFrontend === 'undefined' || ! elementorFrontend.elements || ! elementorFrontend.elements.$document ) {
+			return false;
+		}
+
+		elementorFrontend.elements.$document.on(
+			'elementor/popup/show',
+			function ( event, id, instance ) {
+				try {
+					var targetEl = null;
+
+					if ( instance && typeof instance.getModal === 'function' ) {
+						var modal = instance.getModal();
+						if ( modal && typeof modal.getElements === 'function' ) {
+							var $widgetContent = modal.getElements( 'widgetContent' );
+							if ( $widgetContent && $widgetContent.length ) {
+								targetEl = $widgetContent[0];
+							}
+						}
+					}
+
+					// Fallback (some editor/preview flows): locate modal by popup id.
+					if ( ! targetEl && id ) {
+						var $modal = $( '#elementor-popup-modal-' + id ).find( '.dialog-widget-content' );
+						if ( $modal.length ) {
+							targetEl = $modal[0];
+						}
+					}
+
+					if ( targetEl ) {
+						// Explicitly init Qi widgets inside popup only.
+						qodefAddonsElementorInitQiWidgetsInScope( $( targetEl ) );
+					}
+				} catch ( e ) {}
+			}
+		);
+
+		qodefAddonsElementorPopupHookBound = true;
+		return true;
+	}
+
+	// Bind ASAP for normal frontend pages (Elementor scripts may load after this file).
+	(function qodefAddonsElementorTryBindPopupHookWithRetry() {
+		if ( qodefAddonsElementorBindElementorProPopupHook() ) {
+			return;
+		}
+		setTimeout( qodefAddonsElementorTryBindPopupHookWithRetry, 250 );
+	})();
 
 	var qodefAddonsElementor = {
 		init: function () {

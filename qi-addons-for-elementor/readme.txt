@@ -2,9 +2,9 @@
 Contributors: qodeinteractive
 Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 1.9.6
+Stable tag: 1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -344,6 +344,10 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.10 - 28-05-2026 =
+- Added compatibility with Elementor Pro Popup module
+- Minor improvements
 
 = 1.9.6 - 09-03-2026 =
 - Improved widget loading on Elementor update
