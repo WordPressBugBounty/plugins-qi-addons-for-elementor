@@ -3861,7 +3861,7 @@
   width: calc(100% - 2em);
   height: calc(100% - 2em);
   border: 1px solid currentColor;
-  transition: all 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  transition: all 0.3s ease;
 }
 .qodef-type--inner-border.qodef-inner-border-hover--move-outer-edge:hover .qodef-m-inner-border {
   top: -1em;
@@ -4038,7 +4038,7 @@
 }
 .qodef-qi-cards-gallery .qodef-m-card {
   position: absolute;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s ease;
   width: 100%;
 }
 .qodef-qi-cards-gallery.qodef-orientation--both .qodef-m-card {
@@ -4211,7 +4211,7 @@
   width: 100%;
 }
 .qodef-qi-cards-slider .qodef-m-card:not(.qodef-out):not(.qodef-in) {
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.6s ease;
 }
 .qodef-qi-cards-slider:not(.qodef-backwards) .qodef-m-card:nth-last-child(2):not(.qodef-out):not(.qodef-in) {
   transition-delay: 0.1s;
@@ -7567,7 +7567,7 @@ body.e--ua-safari .qodef-qi-dropcaps.qodef-letter-clip-effect .qodef-m-letter {
 .qodef-qi-parallax-images .qodef-e-parallax-image {
   position: absolute;
   display: block;
-  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.7s ease;
 }
 .qodef-qi-parallax-images .qodef-e-parallax-image.qodef-position--top-left {
   top: 0;
