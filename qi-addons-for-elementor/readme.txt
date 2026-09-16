@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 1.11
+Stable tag: 1.11.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -344,6 +344,11 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.11.1 - 16-09-2026 =
+- Fixed deprecated WordPress notice related to media settings registration
+- Fixed stored DOM XSS in Table of Contents widget heading titles
+- Fixed reflected XSS in Table of Contents widget on search results pages
 
 = 1.11 - 30-07-2026 =
 - Improved css animation rendering

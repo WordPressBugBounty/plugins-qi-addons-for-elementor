@@ -902,65 +902,6 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_animated_text = {};
-
-	$( document ).ready(
-		function () {
-			qodefAnimatedText.init();
-		}
-	);
-
-	var qodefAnimatedText = {
-		init: function () {
-			this.holder = $( '.qodef-qi-animated-text.qodef--animated-by-letter' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefAnimatedText.initItem( $( this ) );
-					}
-				);
-			}
-		},
-		initItem: function ( $currentItem ) {
-			var $words = $currentItem.find( '.qodef-e-word-holder' );
-
-			$words.each(
-				function () {
-					var $word       = $( this ).text(),
-						$wordCount	= $word.length,
-						$split_word = ''
-
-					for (var i = 0; i < $wordCount; i++) {
-						$split_word += '<span class="qodef-e-character">' + $word.charAt( i ) + '</span>';
-					}
-
-					$( this ).html( $split_word );
-				}
-			);
-
-			var $characters = $currentItem.find( '.qodef-e-character' );
-
-			$characters.each(
-				function (index) {
-					var $character         = $( this ),
-						transitionModifier = $currentItem.hasClass( 'qodef--appear-from-left' ) ? 40 : 60,
-						transitionDelay    = (index * transitionModifier) + 'ms';
-
-					$character.css( 'transition-delay', transitionDelay );
-				}
-			);
-		},
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_animated_text.qodefAppear       = qodefAddonsCore.qodefAppear;
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_animated_text.qodefAnimatedText = qodefAnimatedText;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_accordion = {};
 
 	$( document ).ready(
@@ -1038,6 +979,170 @@
 	};
 
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_accordion.qodefAccordion = qodefAccordion;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_banner = {};
+
+	$( document ).ready(
+		function () {
+			qodefInitBanner.init();
+		}
+	);
+
+	var qodefInitBanner = {
+		init: function () {
+			this.holder = $( '.qodef-qi-banner' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefInitBanner.initItem( $( this ) );
+					}
+				);
+			}
+		},
+		initItem: function ( $currentItem ) {
+			var $buttonItem = $currentItem.find( '.qodef-qi-button' );
+
+			if ( $buttonItem.hasClass( 'qodef-type--icon-boxed' ) ) {
+				var $buttonIcon = $buttonItem.find( '.qodef-m-icon' ),
+					height      = $buttonItem.find( '.qodef-m-text' ).outerHeight();
+
+				$buttonIcon.css(
+					'width',
+					height
+				);
+			}
+		}
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_banner.qodefInitBanner = qodefInitBanner;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_animated_text = {};
+
+	$( document ).ready(
+		function () {
+			qodefAnimatedText.init();
+		}
+	);
+
+	var qodefAnimatedText = {
+		init: function () {
+			this.holder = $( '.qodef-qi-animated-text.qodef--animated-by-letter' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefAnimatedText.initItem( $( this ) );
+					}
+				);
+			}
+		},
+		initItem: function ( $currentItem ) {
+			var $words = $currentItem.find( '.qodef-e-word-holder' );
+
+			$words.each(
+				function () {
+					var $word       = $( this ).text(),
+						$wordCount	= $word.length,
+						$split_word = ''
+
+					for (var i = 0; i < $wordCount; i++) {
+						$split_word += '<span class="qodef-e-character">' + $word.charAt( i ) + '</span>';
+					}
+
+					$( this ).html( $split_word );
+				}
+			);
+
+			var $characters = $currentItem.find( '.qodef-e-character' );
+
+			$characters.each(
+				function (index) {
+					var $character         = $( this ),
+						transitionModifier = $currentItem.hasClass( 'qodef--appear-from-left' ) ? 40 : 60,
+						transitionDelay    = (index * transitionModifier) + 'ms';
+
+					$character.css( 'transition-delay', transitionDelay );
+				}
+			);
+		},
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_animated_text.qodefAppear       = qodefAddonsCore.qodefAppear;
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_animated_text.qodefAnimatedText = qodefAnimatedText;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_before_after = {};
+
+	$( document ).ready(
+		function () {
+			qodefBeforeAfter.init();
+		}
+	);
+
+	var qodefBeforeAfter = {
+		init: function () {
+			this.holder = $( '.qodef-qi-before-after' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefBeforeAfter.initItem( $( this ) );
+					}
+				);
+			}
+		},
+		initItem: function ( $currentItem ) {
+			var $currentHolder = $currentItem.find( '.qodef-before-after-image-holder' ),
+				offset         = $currentHolder.data( 'offset' ) / 100,
+				orientation    = 'horizontal',
+				dragText       = $currentHolder.siblings( '.qodef-handle-text' ),
+				dragHolder;
+
+			if ( $currentHolder.parents( '.qodef-qi-before-after' ).hasClass( 'qodef--vertical' ) ) {
+				orientation = 'vertical';
+			}
+
+			qodefAddonsCore.qodefWaitForImages.check(
+				$currentHolder,
+				function () {
+
+					$currentHolder.css(
+						'visibility',
+						'visible'
+					);
+
+					$currentHolder.twentytwenty(
+						{
+							orientation: orientation,
+							default_offset_pct: offset
+						}
+					);
+
+					if ( dragText.length ) {
+						dragHolder = $currentHolder.find( '.twentytwenty-handle' );
+						dragHolder.prepend( dragText );
+					}
+				}
+			);
+		}
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_before_after.qodefBeforeAfter = qodefBeforeAfter;
 
 })( jQuery );
 
@@ -1400,48 +1505,6 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_banner = {};
-
-	$( document ).ready(
-		function () {
-			qodefInitBanner.init();
-		}
-	);
-
-	var qodefInitBanner = {
-		init: function () {
-			this.holder = $( '.qodef-qi-banner' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefInitBanner.initItem( $( this ) );
-					}
-				);
-			}
-		},
-		initItem: function ( $currentItem ) {
-			var $buttonItem = $currentItem.find( '.qodef-qi-button' );
-
-			if ( $buttonItem.hasClass( 'qodef-type--icon-boxed' ) ) {
-				var $buttonIcon = $buttonItem.find( '.qodef-m-icon' ),
-					height      = $buttonItem.find( '.qodef-m-text' ).outerHeight();
-
-				$buttonIcon.css(
-					'width',
-					height
-				);
-			}
-		}
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_banner.qodefInitBanner = qodefInitBanner;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_charts = {};
 
 	$( document ).ready(
@@ -1736,6 +1799,116 @@
 (function ( $ ) {
 	'use strict';
 
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_counter = {};
+
+	$( document ).ready(
+		function () {
+			qodefCounter.init();
+		}
+	);
+
+	var qodefCounter = {
+		init: function () {
+			this.counters = $( '.qodef-qi-counter' );
+
+			if ( this.counters.length ) {
+				this.counters.each(
+					function () {
+						qodefCounter.initItem( $( this ) );
+					}
+				);
+			}
+		},
+		initItem: function ( $currentItem ) {
+			var $counterElement = $currentItem.find( '.qodef-m-digit' ),
+				options         = qodefCounter.generateOptions( $currentItem );
+
+			qodefAddonsCore.qodefIsInViewport.check(
+				$currentItem,
+				function () {
+					qodefCounter.counterScript(
+						$counterElement,
+						options
+					);
+				}
+			);
+		},
+		generateOptions: function ( $counter ) {
+			var options   = {};
+			options.start = typeof $counter.data( 'start-digit' ) !== 'undefined' && $counter.data( 'start-digit' ) !== '' ? $counter.data( 'start-digit' ) : 0;
+			options.end   = typeof $counter.data( 'end-digit' ) !== 'undefined' && $counter.data( 'end-digit' ) !== '' ? $counter.data( 'end-digit' ) : null;
+			options.step  = typeof $counter.data( 'step-digit' ) !== 'undefined' && $counter.data( 'step-digit' ) !== '' ? $counter.data( 'step-digit' ) : 1;
+			options.delay = typeof $counter.data( 'step-delay' ) !== 'undefined' && $counter.data( 'step-delay' ) !== '' ? parseInt(
+				$counter.data( 'step-delay' ),
+				10
+			) : 100;
+			options.txt   = typeof $counter.data( 'digit-label' ) !== 'undefined' && $counter.data( 'digit-label' ) !== '' ? String( $counter.data( 'digit-label' ) ) : '';
+
+			return options;
+		},
+		counterScript: function ( $counterElement, options ) {
+			var defaults = {
+				start: 0,
+				end: null,
+				step: 1,
+				delay: 50,
+				txt: '',
+			};
+
+			var settings = $.extend(
+				defaults,
+				options || {}
+			);
+			var nb_start = settings.start;
+			var nb_end   = settings.end;
+
+			$counterElement.text( nb_start + settings.txt );
+
+			// Timer.
+			// Launches every "settings.delay".
+			var counterInterval = setInterval(
+				function () {
+					// Definition of conditions of arrest.
+					if ( nb_end !== null && nb_start >= nb_end ) {
+						return;
+					}
+					// incrementation.
+					nb_start = nb_start + settings.step;
+					// Check is ended.
+					if ( nb_start >= nb_end ) {
+						nb_start = nb_end;
+						clearInterval( counterInterval );
+					}
+					// display.
+					$counterElement.text( nb_start + settings.txt );
+				},
+				settings.delay
+			);
+
+			var counter = function () {
+				// Definition of conditions of arrest.
+				if ( nb_end !== null && nb_start >= nb_end ) {
+					return;
+				}
+				// incrementation.
+				nb_start = nb_start + settings.step;
+
+				if ( nb_start >= nb_end ) {
+					nb_start = nb_end;
+				}
+				// display.
+				$counterElement.text( nb_start + settings.txt );
+			};
+		}
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_counter.qodefCounter = qodefCounter;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_device_carousel = {};
 
 	$( document ).ready(
@@ -1794,63 +1967,8 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_before_after = {};
-
-	$( document ).ready(
-		function () {
-			qodefBeforeAfter.init();
-		}
-	);
-
-	var qodefBeforeAfter = {
-		init: function () {
-			this.holder = $( '.qodef-qi-before-after' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefBeforeAfter.initItem( $( this ) );
-					}
-				);
-			}
-		},
-		initItem: function ( $currentItem ) {
-			var $currentHolder = $currentItem.find( '.qodef-before-after-image-holder' ),
-				offset         = $currentHolder.data( 'offset' ) / 100,
-				orientation    = 'horizontal',
-				dragText       = $currentHolder.siblings( '.qodef-handle-text' ),
-				dragHolder;
-
-			if ( $currentHolder.parents( '.qodef-qi-before-after' ).hasClass( 'qodef--vertical' ) ) {
-				orientation = 'vertical';
-			}
-
-			qodefAddonsCore.qodefWaitForImages.check(
-				$currentHolder,
-				function () {
-
-					$currentHolder.css(
-						'visibility',
-						'visible'
-					);
-
-					$currentHolder.twentytwenty(
-						{
-							orientation: orientation,
-							default_offset_pct: offset
-						}
-					);
-
-					if ( dragText.length ) {
-						dragHolder = $currentHolder.find( '.twentytwenty-handle' );
-						dragHolder.prepend( dragText );
-					}
-				}
-			);
-		}
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_before_after.qodefBeforeAfter = qodefBeforeAfter;
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_device_slider             = {};
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_device_slider.qodefSwiper = qodefAddonsCore.qodefSwiper;
 
 })( jQuery );
 
@@ -1900,6 +2018,14 @@
 	};
 
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_faq.qodefFAQ = qodefFAQ;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_highlight             = {};
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_highlight.qodefAppear = qodefAddonsCore.qodefAppear;
 
 })( jQuery );
 
@@ -2110,134 +2236,8 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_highlight             = {};
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_highlight.qodefAppear = qodefAddonsCore.qodefAppear;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_counter = {};
-
-	$( document ).ready(
-		function () {
-			qodefCounter.init();
-		}
-	);
-
-	var qodefCounter = {
-		init: function () {
-			this.counters = $( '.qodef-qi-counter' );
-
-			if ( this.counters.length ) {
-				this.counters.each(
-					function () {
-						qodefCounter.initItem( $( this ) );
-					}
-				);
-			}
-		},
-		initItem: function ( $currentItem ) {
-			var $counterElement = $currentItem.find( '.qodef-m-digit' ),
-				options         = qodefCounter.generateOptions( $currentItem );
-
-			qodefAddonsCore.qodefIsInViewport.check(
-				$currentItem,
-				function () {
-					qodefCounter.counterScript(
-						$counterElement,
-						options
-					);
-				}
-			);
-		},
-		generateOptions: function ( $counter ) {
-			var options   = {};
-			options.start = typeof $counter.data( 'start-digit' ) !== 'undefined' && $counter.data( 'start-digit' ) !== '' ? $counter.data( 'start-digit' ) : 0;
-			options.end   = typeof $counter.data( 'end-digit' ) !== 'undefined' && $counter.data( 'end-digit' ) !== '' ? $counter.data( 'end-digit' ) : null;
-			options.step  = typeof $counter.data( 'step-digit' ) !== 'undefined' && $counter.data( 'step-digit' ) !== '' ? $counter.data( 'step-digit' ) : 1;
-			options.delay = typeof $counter.data( 'step-delay' ) !== 'undefined' && $counter.data( 'step-delay' ) !== '' ? parseInt(
-				$counter.data( 'step-delay' ),
-				10
-			) : 100;
-			options.txt   = typeof $counter.data( 'digit-label' ) !== 'undefined' && $counter.data( 'digit-label' ) !== '' ? String( $counter.data( 'digit-label' ) ) : '';
-
-			return options;
-		},
-		counterScript: function ( $counterElement, options ) {
-			var defaults = {
-				start: 0,
-				end: null,
-				step: 1,
-				delay: 50,
-				txt: '',
-			};
-
-			var settings = $.extend(
-				defaults,
-				options || {}
-			);
-			var nb_start = settings.start;
-			var nb_end   = settings.end;
-
-			$counterElement.text( nb_start + settings.txt );
-
-			// Timer.
-			// Launches every "settings.delay".
-			var counterInterval = setInterval(
-				function () {
-					// Definition of conditions of arrest.
-					if ( nb_end !== null && nb_start >= nb_end ) {
-						return;
-					}
-					// incrementation.
-					nb_start = nb_start + settings.step;
-					// Check is ended.
-					if ( nb_start >= nb_end ) {
-						nb_start = nb_end;
-						clearInterval( counterInterval );
-					}
-					// display.
-					$counterElement.text( nb_start + settings.txt );
-				},
-				settings.delay
-			);
-
-			var counter = function () {
-				// Definition of conditions of arrest.
-				if ( nb_end !== null && nb_start >= nb_end ) {
-					return;
-				}
-				// incrementation.
-				nb_start = nb_start + settings.step;
-
-				if ( nb_start >= nb_end ) {
-					nb_start = nb_end;
-				}
-				// display.
-				$counterElement.text( nb_start + settings.txt );
-			};
-		}
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_counter.qodefCounter = qodefCounter;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_gallery                    = {};
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_gallery.qodefLightboxPopup = qodefAddonsCore.qodefLightboxPopup;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_device_slider             = {};
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_device_slider.qodefSwiper = qodefAddonsCore.qodefSwiper;
 
 })( jQuery );
 
@@ -2256,15 +2256,6 @@
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_gallery_masonry                    = {};
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_gallery_masonry.qodefMasonryLayout = qodefAddonsCore.qodefMasonryLayout;
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_gallery_masonry.qodefLightboxPopup = qodefAddonsCore.qodefLightboxPopup;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_info_cards = {};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_info_cards.qodefButton = qodefAddonsCore.qodefButton;
 
 })( jQuery );
 
@@ -2334,51 +2325,18 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_interactive_banner = {};
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_info_cards = {};
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_interactive_banner.qodefButton = qodefAddonsCore.qodefButton;
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_info_cards.qodefButton = qodefAddonsCore.qodefButton;
 
 })( jQuery );
 
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_message_box = {};
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_interactive_banner = {};
 
-	$( document ).ready(
-		function () {
-			qodefMessageBoxList.init();
-		}
-	);
-
-	var qodefMessageBoxList = {
-		init: function () {
-			this.holder = $( '.qodef-qi-message-box' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefMessageBoxList.initItem( $( this ) );
-					}
-				);
-			}
-		},
-		initItem: function ( $currentItem ) {
-			var $boxHolder = $currentItem.closest( '.elementor-element' );
-			$boxHolder.addClass( 'q-message-box-holder' );
-
-			$currentItem.find( '.qodef-m-close-icon' ).on(
-				'click',
-				function ( e ) {
-					$( this ).parent().addClass( 'qodef-hidden' );
-					$boxHolder.addClass( 'qodef-hidden' );
-					$boxHolder.animate( {height: 0},{queue: false} );
-				}
-			);
-		}
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_message_box.qodefMessageBoxList = qodefMessageBoxList;
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_interactive_banner.qodefButton = qodefAddonsCore.qodefButton;
 
 })( jQuery );
 
@@ -2445,8 +2403,59 @@
 (function ( $ ) {
 	'use strict';
 
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_slider                    = {};
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_slider.qodefSwiper        = qodefAddonsCore.qodefSwiper;
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_slider.qodefLightboxPopup = qodefAddonsCore.qodefLightboxPopup;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_item_showcase             = {};
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_item_showcase.qodefAppear = qodefAddonsCore.qodefAppear;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_message_box = {};
+
+	$( document ).ready(
+		function () {
+			qodefMessageBoxList.init();
+		}
+	);
+
+	var qodefMessageBoxList = {
+		init: function () {
+			this.holder = $( '.qodef-qi-message-box' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefMessageBoxList.initItem( $( this ) );
+					}
+				);
+			}
+		},
+		initItem: function ( $currentItem ) {
+			var $boxHolder = $currentItem.closest( '.elementor-element' );
+			$boxHolder.addClass( 'q-message-box-holder' );
+
+			$currentItem.find( '.qodef-m-close-icon' ).on(
+				'click',
+				function ( e ) {
+					$( this ).parent().addClass( 'qodef-hidden' );
+					$boxHolder.addClass( 'qodef-hidden' );
+					$boxHolder.animate( {height: 0},{queue: false} );
+				}
+			);
+		}
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_message_box.qodefMessageBoxList = qodefMessageBoxList;
 
 })( jQuery );
 
@@ -2560,8 +2569,9 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_process             = {};
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_process.qodefAppear = qodefAddonsCore.qodefAppear;
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_pricing_list = {};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_pricing_list.qodefButton = qodefAddonsCore.qodefButton;
 
 })( jQuery );
 
@@ -2639,9 +2649,8 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_slider                    = {};
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_slider.qodefSwiper        = qodefAddonsCore.qodefSwiper;
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_image_slider.qodefLightboxPopup = qodefAddonsCore.qodefLightboxPopup;
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_process             = {};
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_process.qodefAppear = qodefAddonsCore.qodefAppear;
 
 })( jQuery );
 
@@ -2651,117 +2660,6 @@
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_pricing_table = {};
 
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_pricing_table.qodefButton = qodefAddonsCore.qodefButton;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_progress_bar_circle = {};
-
-	$( document ).ready(
-		function () {
-			qodefProgressBar.init();
-		}
-	);
-
-	/**
-	 * Init progress bar - circle shortcode functionality
-	 */
-	var qodefProgressBar = {
-		init: function () {
-			this.holder = $( '.qodef-qi-progress-bar-circle' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefProgressBar.initItem( $( this ) );
-					}
-				);
-			}
-		},
-		initItem: function ( $currentItem ) {
-
-			qodefAddonsCore.qodefIsInViewport.check(
-				$currentItem,
-				function () {
-					$currentItem.addClass( 'qodef--init' );
-
-					var $container = $currentItem.find( '.qodef-m-canvas' ),
-						data       = qodefProgressBar.generateBarData( $currentItem ),
-						number     = $currentItem.data( 'number' ) / 100;
-
-					qodefProgressBar.initCircleBar(
-						$container,
-						data,
-						number
-					);
-				}
-			);
-		},
-		generateBarData: function ( $thisBar ) {
-			var activeWidth   = $thisBar.data( 'active-line-width' );
-			var activeColor   = $thisBar.data( 'active-line-color' );
-			var inactiveWidth = $thisBar.data( 'inactive-line-width' );
-			var inactiveColor = $thisBar.data( 'inactive-line-color' );
-			var easing        = 'linear';
-			var duration      = typeof $thisBar.data( 'duration' ) !== 'undefined' && $thisBar.data( 'duration' ) !== '' ? parseInt(
-				$thisBar.data( 'duration' ),
-				10
-			) : 1200;
-			var textColor     = $thisBar.data( 'text-color' );
-			var progressWidth = $thisBar.width();
-
-			return {
-				color: activeColor,
-				strokeWidth: activeWidth * 100 / progressWidth,
-				trailColor: inactiveColor,
-				trailWidth: inactiveWidth * 100 / progressWidth,
-				svgStyle: {
-					display: 'block',
-					width: '100%',
-				},
-				text: {
-					className: 'qodef-m-value',
-					style: {
-						color: textColor
-					},
-					autoStyleContainer: false
-				},
-				easing: easing,
-				duration: duration,
-				from: {
-					color: inactiveColor
-				},
-				to: {
-					color: activeColor
-				},
-				step: function ( state, bar ) {
-					bar.setText( Math.round( bar.value() * 100 ) + '<sup class="qodef-m-percentage">%</sup>' );
-				},
-			};
-		},
-		initCircleBar: function ( $container, data, number ) {
-			if ( qodefProgressBar.checkBar( $container ) ) {
-				var $bar = new ProgressBar.Circle(
-					$container[0],
-					data
-				);
-
-				$bar.animate( number );
-			}
-		},
-		checkBar: function ( $container ) {
-			// check if svg is already in container, elementor fix.
-			if ( $container.find( 'svg' ).length ) {
-				return false;
-			}
-
-			return true;
-		}
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_progress_bar_circle.qodefProgressBar = qodefProgressBar;
 
 })( jQuery );
 
@@ -2947,6 +2845,117 @@
 	};
 
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_progress_bar_horizontal.qodefProgressBar = qodefProgressBar;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_progress_bar_circle = {};
+
+	$( document ).ready(
+		function () {
+			qodefProgressBar.init();
+		}
+	);
+
+	/**
+	 * Init progress bar - circle shortcode functionality
+	 */
+	var qodefProgressBar = {
+		init: function () {
+			this.holder = $( '.qodef-qi-progress-bar-circle' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefProgressBar.initItem( $( this ) );
+					}
+				);
+			}
+		},
+		initItem: function ( $currentItem ) {
+
+			qodefAddonsCore.qodefIsInViewport.check(
+				$currentItem,
+				function () {
+					$currentItem.addClass( 'qodef--init' );
+
+					var $container = $currentItem.find( '.qodef-m-canvas' ),
+						data       = qodefProgressBar.generateBarData( $currentItem ),
+						number     = $currentItem.data( 'number' ) / 100;
+
+					qodefProgressBar.initCircleBar(
+						$container,
+						data,
+						number
+					);
+				}
+			);
+		},
+		generateBarData: function ( $thisBar ) {
+			var activeWidth   = $thisBar.data( 'active-line-width' );
+			var activeColor   = $thisBar.data( 'active-line-color' );
+			var inactiveWidth = $thisBar.data( 'inactive-line-width' );
+			var inactiveColor = $thisBar.data( 'inactive-line-color' );
+			var easing        = 'linear';
+			var duration      = typeof $thisBar.data( 'duration' ) !== 'undefined' && $thisBar.data( 'duration' ) !== '' ? parseInt(
+				$thisBar.data( 'duration' ),
+				10
+			) : 1200;
+			var textColor     = $thisBar.data( 'text-color' );
+			var progressWidth = $thisBar.width();
+
+			return {
+				color: activeColor,
+				strokeWidth: activeWidth * 100 / progressWidth,
+				trailColor: inactiveColor,
+				trailWidth: inactiveWidth * 100 / progressWidth,
+				svgStyle: {
+					display: 'block',
+					width: '100%',
+				},
+				text: {
+					className: 'qodef-m-value',
+					style: {
+						color: textColor
+					},
+					autoStyleContainer: false
+				},
+				easing: easing,
+				duration: duration,
+				from: {
+					color: inactiveColor
+				},
+				to: {
+					color: activeColor
+				},
+				step: function ( state, bar ) {
+					bar.setText( Math.round( bar.value() * 100 ) + '<sup class="qodef-m-percentage">%</sup>' );
+				},
+			};
+		},
+		initCircleBar: function ( $container, data, number ) {
+			if ( qodefProgressBar.checkBar( $container ) ) {
+				var $bar = new ProgressBar.Circle(
+					$container[0],
+					data
+				);
+
+				$bar.animate( number );
+			}
+		},
+		checkBar: function ( $container ) {
+			// check if svg is already in container, elementor fix.
+			if ( $container.find( 'svg' ).length ) {
+				return false;
+			}
+
+			return true;
+		}
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_progress_bar_circle.qodefProgressBar = qodefProgressBar;
 
 })( jQuery );
 
@@ -3198,12 +3207,15 @@
 				exclude_tags   = typeof $contentHolder.data( 'excluded-tags' ) !== 'undefined' ? $contentHolder.data( 'excluded-tags' ) : '',
 				exclude_cid    = typeof $contentHolder.data( 'excluded-cids' ) !== 'undefined' ? $contentHolder.data( 'excluded-cids' ) : '',
 				listType       = typeof $contentHolder.data( 'type' ) !== 'undefined' ? $contentHolder.data( 'type' ) : 'ul',
-				$contentTable  = $currentItem.find( '.qodef-m-table-content > ' + listType ),
+				$contentTable,
 				ids            = '',
 				$allObjects    = {},
 				$links         = {},
 				$removables    = ['.qodef-e-number', '.qodef-e-mark'],
 				$headings;
+
+			listType      = ( 'ol' === listType ) ? 'ol' : 'ul';
+			$contentTable = $currentItem.find( '.qodef-m-table-content > ' + listType );
 
 			// if only main content set - include elementor class for content.
 			if ( $currentItem.hasClass( 'qodef--only-content' ) ) {
@@ -3243,24 +3255,29 @@
 							if ( currentTag > previousTag ) {
 								// if tag of current item is higher then previous tag (h4 > h3) then append new ul tag, and set item to it.
 								// afterwards set $contentTable variable to current ul used so new items that are equal to it are added to same ul.
-								var $previousItem = $contentTable.find( 'a[href=#' + $allObjects[e - 1].id + ']' ).parent();
+								var $previousItem = $contentTable.find( 'a[href="#' + $allObjects[e - 1].id + '"]' ).parent();
 
-								$previousItem.append( '<' + listType + '>' );
+								$previousItem.append( $( document.createElement( listType ) ) );
 								$contentTable = $previousItem.find( listType ).first();
 
 							} else if ( currentTag < previousTag ) {
 								// if tag of current item is lower then previous tag (h2 > h4) then find previous item that has the same tag or lower.
 								// afterwards set $contentTable variable to sibling parent, so current item is added to it.
 								var siblingID = qodefTableOfContents.findSiblings( currentTag, e, $allObjects ),
-									$sibling  = $contentTable.parents( '.qodef-m-table-content' ).find( 'a[href=#' + siblingID + ']' ).parent();
+									$sibling  = $contentTable.parents( '.qodef-m-table-content' ).find( 'a[href="#' + siblingID + '"]' ).parent();
 
 								$contentTable = $sibling.parents( listType ).first();
 							}
 						}
 
 						// add id attribute to item, and add item title and link to list.
+						// Use text nodes so heading content is never reparsed as HTML (stored DOM XSS).
 						$this.attr( 'id', $Ids.finalID );
-						$contentTable.append( '<li><a href="#' + $Ids.finalID + '">' + $title.text() + '</a></li>' );
+						$contentTable.append(
+							$( '<li></li>' ).append(
+								$( '<a></a>' ).attr( 'href', '#' + $Ids.finalID ).text( $title.text() )
+							)
+						);
 					}
 				);
 
@@ -3449,110 +3466,6 @@
 (function ( $ ) {
 	'use strict';
 
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_vertical = {};
-
-	$( document ).ready(
-		function () {
-			qodefTabsVertical.init();
-		}
-	);
-
-	var qodefTabsVertical = {
-		init: function () {
-			this.holder = $( '.qodef-qi-tabs-vertical' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefTabsVertical.initItems( $( this ) );
-					}
-				);
-			}
-		},
-		initItems: function ( $tabs ) {
-			$tabs.children( '.qodef-tabs-vertical-content' ).each(
-				function ( index ) {
-					index = index + 1;
-
-					var $that    = $( this ),
-						link     = $that.attr( 'id' ),
-						$navItem = $that.parent().find( '.qodef-tabs-vertical-navigation li:nth-child(' + index + ') a' ),
-						navLink  = $navItem.attr( 'href' );
-
-					link = '#' + link;
-
-					if ( link.indexOf( navLink ) > -1 ) {
-						$navItem.attr(
-							'href',
-							link
-						);
-					}
-				}
-			);
-
-			$tabs.addClass( 'qodef--init' ).tabs();
-		}
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_vertical.qodefTabsVertical = qodefTabsVertical;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_horizontal = {};
-
-	$( document ).ready(
-		function () {
-			qodefTabsHorizontal.init();
-		}
-	);
-
-	var qodefTabsHorizontal = {
-		init: function () {
-			this.holder = $( '.qodef-qi-tabs-horizontal' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefTabsHorizontal.initItems( $( this ) );
-					}
-				);
-			}
-		},
-		initItems: function ( $tabs ) {
-			$tabs.children( '.qodef-tabs-horizontal-content' ).each(
-				function ( index ) {
-					index = index + 1;
-
-					var $that    = $( this ),
-						link     = $that.attr( 'id' ),
-						$navItem = $that.parent().find( '.qodef-tabs-horizontal-navigation li:nth-child(' + index + ') a' ),
-						navLink  = $navItem.attr( 'href' );
-
-					link = '#' + link;
-
-					if ( link.indexOf( navLink ) > -1 ) {
-						$navItem.attr(
-							'href',
-							link
-						);
-					}
-				}
-			);
-
-			$tabs.addClass( 'qodef--init' ).tabs();
-		}
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_horizontal.qodefTabsHorizontal = qodefTabsHorizontal;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_slider_switch = {};
 
 	$( document ).ready(
@@ -3664,6 +3577,118 @@
 
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_slider_switch.qodefSwiper       = qodefAddonsCore.qodefSwiper;
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_slider_switch.qodefSliderSwitch = qodefSliderSwitch;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_horizontal = {};
+
+	$( document ).ready(
+		function () {
+			qodefTabsHorizontal.init();
+		}
+	);
+
+	var qodefTabsHorizontal = {
+		init: function () {
+			this.holder = $( '.qodef-qi-tabs-horizontal' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefTabsHorizontal.initItems( $( this ) );
+					}
+				);
+			}
+		},
+		initItems: function ( $tabs ) {
+			$tabs.children( '.qodef-tabs-horizontal-content' ).each(
+				function ( index ) {
+					index = index + 1;
+
+					var $that    = $( this ),
+						link     = $that.attr( 'id' ),
+						$navItem = $that.parent().find( '.qodef-tabs-horizontal-navigation li:nth-child(' + index + ') a' ),
+						navLink  = $navItem.attr( 'href' );
+
+					link = '#' + link;
+
+					if ( link.indexOf( navLink ) > -1 ) {
+						$navItem.attr(
+							'href',
+							link
+						);
+					}
+				}
+			);
+
+			$tabs.addClass( 'qodef--init' ).tabs();
+		}
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_horizontal.qodefTabsHorizontal = qodefTabsHorizontal;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_vertical = {};
+
+	$( document ).ready(
+		function () {
+			qodefTabsVertical.init();
+		}
+	);
+
+	var qodefTabsVertical = {
+		init: function () {
+			this.holder = $( '.qodef-qi-tabs-vertical' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefTabsVertical.initItems( $( this ) );
+					}
+				);
+			}
+		},
+		initItems: function ( $tabs ) {
+			$tabs.children( '.qodef-tabs-vertical-content' ).each(
+				function ( index ) {
+					index = index + 1;
+
+					var $that    = $( this ),
+						link     = $that.attr( 'id' ),
+						$navItem = $that.parent().find( '.qodef-tabs-vertical-navigation li:nth-child(' + index + ') a' ),
+						navLink  = $navItem.attr( 'href' );
+
+					link = '#' + link;
+
+					if ( link.indexOf( navLink ) > -1 ) {
+						$navItem.attr(
+							'href',
+							link
+						);
+					}
+				}
+			);
+
+			$tabs.addClass( 'qodef--init' ).tabs();
+		}
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_tabs_vertical.qodefTabsVertical = qodefTabsVertical;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_testimonials_slider             = {};
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_testimonials_slider.qodefSwiper = qodefAddonsCore.qodefSwiper;
 
 })( jQuery );
 
@@ -3826,23 +3851,6 @@
 
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_timeline.qodefTimeline = qodefTimeline;
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_timeline.qodefAppear   = qodefAddonsCore.qodefAppear;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_pricing_list = {};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_pricing_list.qodefButton = qodefAddonsCore.qodefButton;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_testimonials_slider             = {};
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_testimonials_slider.qodefSwiper = qodefAddonsCore.qodefSwiper;
 
 })( jQuery );
 
@@ -4529,72 +4537,6 @@
 
 	$( document ).ready(
 		function () {
-			qodefProductListSwap.init();
-		}
-	);
-
-	var qodefProductListSwap = {
-		init: function () {
-			this.holder = $( '.qodef-qi-woo-shortcode-product-list' );
-
-			if ( this.holder.length ) {
-				this.holder.each(
-					function () {
-						qodefProductListSwap.initItem( $( this ) );
-					}
-				);
-			}
-		},
-		initItem: function ( $currentItem ) {
-			if ( $currentItem.hasClass( 'qodef-item-layout--info-below-swap' ) ) {
-				var $items = $currentItem.find( '.qodef-grid-item' );
-
-				if ( $items.length ) {
-					$items.each(
-						function () {
-							var $this       = $( this ),
-								$swapHolder = $this.find( '.qodef-e-swap-holder' ),
-								$price      = $swapHolder.find( '.qodef-woo-product-price' ),
-								$button     = $swapHolder.find( '.qodef-e-to-swap .qodef-qi-button' ),
-								width       = $button.outerWidth(),
-								height      = $button.outerHeight(),
-								maxWidth    = Math.ceil(
-									Math.max(
-										width,
-										$price.width()
-									)
-								) + 'px',
-								maxHeight   = Math.ceil(
-									Math.max(
-										height,
-										$price.height()
-									)
-								) + 'px';
-
-							$this.css(
-								{
-									'--qodef-max-width': maxWidth,
-									'--qodef-max-height': maxHeight,
-								}
-							);
-
-							$swapHolder.addClass( 'qodef--initialized' );
-						}
-					);
-				}
-			}
-		},
-	};
-
-	qodefAddonsCore.shortcodes.qi_addons_for_elementor_product_list.qodefProductListSwap = qodefProductListSwap;
-
-})( jQuery );
-
-(function ( $ ) {
-	'use strict';
-
-	$( document ).ready(
-		function () {
 			qodefProductSliderSwap.init();
 		}
 	);
@@ -4653,5 +4595,71 @@
 	};
 
 	qodefAddonsCore.shortcodes.qi_addons_for_elementor_product_slider.qodefProductSliderSwap = qodefProductSliderSwap;
+
+})( jQuery );
+
+(function ( $ ) {
+	'use strict';
+
+	$( document ).ready(
+		function () {
+			qodefProductListSwap.init();
+		}
+	);
+
+	var qodefProductListSwap = {
+		init: function () {
+			this.holder = $( '.qodef-qi-woo-shortcode-product-list' );
+
+			if ( this.holder.length ) {
+				this.holder.each(
+					function () {
+						qodefProductListSwap.initItem( $( this ) );
+					}
+				);
+			}
+		},
+		initItem: function ( $currentItem ) {
+			if ( $currentItem.hasClass( 'qodef-item-layout--info-below-swap' ) ) {
+				var $items = $currentItem.find( '.qodef-grid-item' );
+
+				if ( $items.length ) {
+					$items.each(
+						function () {
+							var $this       = $( this ),
+								$swapHolder = $this.find( '.qodef-e-swap-holder' ),
+								$price      = $swapHolder.find( '.qodef-woo-product-price' ),
+								$button     = $swapHolder.find( '.qodef-e-to-swap .qodef-qi-button' ),
+								width       = $button.outerWidth(),
+								height      = $button.outerHeight(),
+								maxWidth    = Math.ceil(
+									Math.max(
+										width,
+										$price.width()
+									)
+								) + 'px',
+								maxHeight   = Math.ceil(
+									Math.max(
+										height,
+										$price.height()
+									)
+								) + 'px';
+
+							$this.css(
+								{
+									'--qodef-max-width': maxWidth,
+									'--qodef-max-height': maxHeight,
+								}
+							);
+
+							$swapHolder.addClass( 'qodef--initialized' );
+						}
+					);
+				}
+			}
+		},
+	};
+
+	qodefAddonsCore.shortcodes.qi_addons_for_elementor_product_list.qodefProductListSwap = qodefProductListSwap;
 
 })( jQuery );

@@ -75,10 +75,10 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'name'          => 'only_content',
 					'title'         => esc_html__( 'Limit ToC to Main Page Content', 'qi-addons-for-elementor' ),
 					'options'       => array(
-						'no'  => esc_html__( 'No', 'qi-addons-for-elementor' ),
 						'yes' => esc_html__( 'Yes', 'qi-addons-for-elementor' ),
+						'no'  => esc_html__( 'No', 'qi-addons-for-elementor' ),
 					),
-					'default_value' => 'no',
+					'default_value' => 'yes',
 				)
 			);
 			$this->set_option(

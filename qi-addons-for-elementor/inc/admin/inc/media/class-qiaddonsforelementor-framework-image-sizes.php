@@ -21,7 +21,7 @@ if ( ! class_exists( 'QiAddonsForElementor_Framework_Image_Sizes' ) ) {
 
 			add_action( 'admin_init', array( $this, 'settings_init' ) );
 
-			add_filter( 'whitelist_options', array( $this, 'register_media_settings' ) );
+			add_filter( 'allowed_options', array( $this, 'register_media_settings' ) );
 
 			add_filter( 'qi_addons_for_elementor_filter_framework_pool_list_image_dimension', array( $this, 'register_pool_list_image_dimension' ) );
 		}
