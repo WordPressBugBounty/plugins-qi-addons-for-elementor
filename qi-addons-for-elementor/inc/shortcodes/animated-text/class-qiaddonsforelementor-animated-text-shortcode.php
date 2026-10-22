@@ -194,7 +194,6 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 
 		public function str_split_unicode( $str ) {
 			mb_internal_encoding( 'UTF-8' );
-			$str = html_entity_decode( $str, ENT_QUOTES, 'UTF-8' );
 			$len = mb_strlen( $str );
 
 			for ( $i = 0; $i < $len; $i++ ) {
@@ -212,7 +211,8 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					$split_text = explode( ' ', $title );
 
 					foreach ( $split_text as $key => $value ) {
-						$split_text[ $key ] = '<span class="qodef-e-word">' . html_entity_decode( $value ) . '</span>';
+						// Leave entities encoded. Decoding before kses turns them back into tags.
+						$split_text[ $key ] = '<span class="qodef-e-word">' . $value . '</span>';
 					}
 				} elseif ( 'letter' === $atts['split_title'] ) {
 					$split_text = explode( ' ', $title );

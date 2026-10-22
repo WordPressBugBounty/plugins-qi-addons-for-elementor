@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 1.11.1
+Stable tag: 1.11.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -344,6 +344,10 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.11.2 - 22-10-2026 =
+- Fixed 'Table of Contents' widget excluded tags not being applied when "Limit ToC to Main Page Content" is enabled
+- Fixed stored HTML injection in the 'Animated Text' widget title
 
 = 1.11.1 - 16-09-2026 =
 - Fixed deprecated WordPress notice related to media settings registration

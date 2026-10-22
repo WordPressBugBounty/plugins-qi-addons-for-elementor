@@ -3304,17 +3304,25 @@
 			var $headings,
 				$toRemove = [],
 				tag_array,
-				cid_array,
+				cid_array = [],
 				cid_not   = '';
 
 			// first remove tags from selector.
+			// Match the tag as the last token so prefixed selectors (".elementor h1") still match.
 			if ( 0 < tags.length ) {
 				tag_array = tags.split( ',' );
 
 				// phpcs:ignore Squiz.PHP.DisallowSizeFunctionsInLoops.Found
 				for ( var i = 0; i < tag_array.length; i++ ) {
-					if ( -1 !== selector.indexOf( tag_array[i] ) ) {
-						selector.splice( selector.indexOf( tag_array[i] ), 1 );
+					var tag      = tag_array[i].trim(),
+						tagIndex = selector.findIndex(
+							function ( item ) {
+								return item.trim().split( /\s+/ ).pop() === tag;
+							}
+						);
+
+					if ( -1 !== tagIndex ) {
+						selector.splice( tagIndex, 1 );
 					}
 				}
 			}

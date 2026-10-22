@@ -95,9 +95,9 @@ if ( ! class_exists( 'QiAddonsForElementor_Framework_Image_Sizes' ) ) {
 			}
 		}
 
-		public function register_media_settings( $whitelist_options ) {
+		public function register_media_settings( $allowed_options ) {
 			if ( ! empty( $this->image_sizes ) ) {
-				$media_options = $whitelist_options['media'];
+				$media_options = $allowed_options['media'];
 				foreach ( $this->image_sizes as $size ) {
 					$image_size_name   = $size['slug'];
 					$width_field_name  = $image_size_name . '_w';
@@ -107,10 +107,10 @@ if ( ! class_exists( 'QiAddonsForElementor_Framework_Image_Sizes' ) ) {
 					$media_options[]   = $height_field_name;
 					$media_options[]   = $crop_field_name;
 				}
-				$whitelist_options['media'] = $media_options;
+				$allowed_options['media'] = $media_options;
 			}
 
-			return $whitelist_options;
+			return $allowed_options;
 		}
 
 		public function register_pool_list_image_dimension( $options ) {

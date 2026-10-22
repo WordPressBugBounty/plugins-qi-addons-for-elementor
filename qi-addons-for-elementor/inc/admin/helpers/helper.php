@@ -600,6 +600,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_framework_wp_kses_html' ) ) {
 				);
 				break;
 			case 'content':
+			case 'animated_title':
 				$atts = apply_filters(
 					'qi_addons_for_elementor_filter_framework_wp_kses_content_atts',
 					array(
@@ -727,6 +728,9 @@ if ( ! function_exists( 'qi_addons_for_elementor_framework_wp_kses_html' ) ) {
 						),
 					)
 				);
+				if ( 'animated_title' === $type ) {
+					unset( $atts['form'], $atts['input'], $atts['label'], $atts['select'], $atts['option'] );
+				}
 				break;
 			case 'script':
 				$atts = apply_filters(
